@@ -41,7 +41,7 @@ describe('primeFactors', function () {
     expect(primeFactors.for(901255)).toEqual([5, 17, 23, 461]);
   });
 
-  xit('factors 93819012551', function () {
+  it('factors 93819012551', function () {
     expect(primeFactors.for(93819012551)).toEqual([11, 9539, 894119]);
   });
 });

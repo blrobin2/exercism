@@ -1,41 +1,23 @@
 module.exports = {
-  for: function(number) {
+  for: num => {
+    let numberToCheck = Math.floor(num);
     let factors = [];
+    let doLoop = numberToCheck > 1;
+    let root, x;
 
-    if (number === 1) {
-      return factors;
-    }
-
-    if (number < 4) {
-      factors.push(number);
-      return factors;
-    }
-
-    let numberToEvaluate = number;
-    let i;
-    NEXTPRIME: for (i = 2; i < numberToEvaluate; i++) {
-      if (!Number.isInteger(numberToEvaluate / i)) {
-        continue NEXTPRIME;
+    while (doLoop) {
+      root = Math.sqrt(numberToCheck);
+      x = 2;
+      if (numberToCheck % x !== 0) {
+        x = 3;
+        while (numberToCheck % x && (x += 2) < root);
       }
-      numberToEvaluate = numberToEvaluate / i;
-      while (Number.isInteger(numberToEvaluate)) {
-        factors.push(i);
-        if (isPrime(numberToEvaluate, i)) {
-          factors.push(numberToEvaluate);
-          continue NEXTPRIME;
-        }
-        numberToEvaluate = numberToEvaluate / i;
-      }
+      x = x > root ? numberToCheck : x;
+      factors.push(x);
+      doLoop = x !== numberToCheck;
+      numberToCheck /= x;
     }
 
     return factors;
   }
 };
-
-
-function isPrime(num) {
-  for (var i = 2; i < num; i++) {
-    if (num % i === 0) return false;
-  }
-  return num !== 1;
-}
