@@ -8,7 +8,7 @@ module.exports = class Binary {
   }
 
   toDecimal() {
-    //101 => (1 * 2 ^ 2) + (0 * 2 ^ 1) + (1 * 2 ^ 0)
+    // 101 => (1 * 2 ^ 2) + (0 * 2 ^ 1) + (1 * 2 ^ 0)
     return this.binary.reduce(
       (total, number, index) =>
         total +
