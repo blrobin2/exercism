@@ -1,7 +1,7 @@
 module.exports = class Matrix {
   constructor(matrixString) {
     this.rows = this._matrixStringToRowMatrix(matrixString);
-    this.columns = this._rowsToColumns();
+    this.columns = this._rowMatrixToColumnMatrix();
   }
 
   _matrixStringToRowMatrix(matrixString) {
@@ -10,8 +10,10 @@ module.exports = class Matrix {
     );
   }
 
-  _rowsToColumns() {
-    return this.rows.reduce(this._reduceRowsToColumns, []);
+  _rowMatrixToColumnMatrix() {
+    return this.rows[0].map((_, index) =>
+      this._grabItemsFromEachRowAtGivenIndex(index)
+    );
   }
 
   _matrixStringToRowStrings(matrixString) {
@@ -22,12 +24,7 @@ module.exports = class Matrix {
     return rowString.split(" ").map(x => parseInt(x));
   }
 
-  _reduceRowsToColumns(columns, row) {
-    row.forEach((cell, index) => {
-      if (!columns[index]) columns[index] = [];
-      columns[index].push(cell);
-    });
-
-    return columns;
+  _grabItemsFromEachRowAtGivenIndex(index) {
+    return this.rows.map(row => row[index]);
   }
 };
