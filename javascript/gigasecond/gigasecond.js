@@ -1,6 +1,6 @@
 module.exports = class Gigasecond {
   constructor(date) {
-    this.giga = 1000000000 * 1000;
+    this.giga = Math.pow(10, 12);
     this._date = new Date(date.valueOf() + this.giga);
   }
 
