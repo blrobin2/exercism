@@ -7,4 +7,4 @@ module.exports = class Gigasecond {
   date() {
     return this._date;
   }
-}
+};

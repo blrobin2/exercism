@@ -6,10 +6,13 @@ module.exports = class Pangram {
   }
 
   isPangram() {
-    return new Set(this._getAlphaCharactersFromString()).size === this.SIZE_OF_ALPHABET;
+    return (
+      new Set(this._getAlphaCharactersFromString()).size ===
+      this.SIZE_OF_ALPHABET
+    );
   }
 
   _getAlphaCharactersFromString() {
     return this.string.toLowerCase().match(this.ONLY_ALPHA_CHARACTERS);
   }
-}
+};

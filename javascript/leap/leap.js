@@ -3,11 +3,11 @@
 // convenience to get you started writing code faster.
 //
 
-var Year = function (input) {
+var Year = function(input) {
   this.year = input;
 };
 
-Year.prototype.isLeap = function () {
+Year.prototype.isLeap = function() {
   if (this._is400YearReintroduction()) {
     return true;
   }
@@ -17,12 +17,12 @@ Year.prototype.isLeap = function () {
   return this.year % 4 === 0;
 };
 
-Year.prototype._is400YearReintroduction = function () {
+Year.prototype._is400YearReintroduction = function() {
   return this.year % 400 === 0;
-}
+};
 
-Year.prototype._is100YearSkip = function () {
+Year.prototype._is100YearSkip = function() {
   return this.year % 100 === 0;
-}
+};
 
 module.exports = Year;

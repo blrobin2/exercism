@@ -54,4 +54,4 @@ module.exports = class SpaceAge {
   _secondsToEarthYear() {
     return this.seconds / this.ONE_EARTH_YEAR_IN_SECONDS;
   }
-}
+};

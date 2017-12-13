@@ -1,23 +1,23 @@
 module.exports = class DnaTranscriber {
   toRna(input) {
     return input
-      .split('')
+      .split("")
       .map(this.translateDnaLetterToRnaLetter)
-      .join('');
+      .join("");
   }
 
   translateDnaLetterToRnaLetter(letter) {
     switch (letter) {
-      case 'G':
-        return 'C';
-      case 'A':
-        return 'U';
-      case 'T':
-        return 'A';
-      case 'C':
-        return 'G';
+      case "G":
+        return "C";
+      case "A":
+        return "U";
+      case "T":
+        return "A";
+      case "C":
+        return "G";
       default:
-        throw Error('Invalid input');
+        throw Error("Invalid input");
     }
   }
-}
+};

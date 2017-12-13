@@ -1,12 +1,12 @@
 module.exports = class Cipher {
-  constructor(key = 'aaaaaaaaaa') {
-    if (! this._isAllLowerCaseLetters(key)) {
-      throw new Error('Bad key');
+  constructor(key = "aaaaaaaaaa") {
+    if (!this._isAllLowerCaseLetters(key)) {
+      throw new Error("Bad key");
     }
     this.key = key;
     this.LENGTH_OF_ALPHABET = 26;
-    this.CHAR_CODE_A = 'a'.charCodeAt(0);
-    this.CHAR_CODE_Z = 'z'.charCodeAt(0);
+    this.CHAR_CODE_A = "a".charCodeAt(0);
+    this.CHAR_CODE_Z = "z".charCodeAt(0);
     this.map = this._createMapFromKey();
   }
 
@@ -15,8 +15,7 @@ module.exports = class Cipher {
   }
 
   _createMapFromKey() {
-    return [...this.key]
-      .map(this._mapLetterToAlphabetIndex.bind(this));
+    return [...this.key].map(this._mapLetterToAlphabetIndex.bind(this));
   }
 
   _mapLetterToAlphabetIndex(letter) {
@@ -32,10 +31,12 @@ module.exports = class Cipher {
   }
 
   _processString(string, processingFunction) {
-    return [...string].map((letter, index) => {
+    return [...string]
+      .map((letter, index) => {
         const code = processingFunction(letter, index);
         return String.fromCharCode(this._wrapCharCodeBackAround(code));
-      }).join('');
+      })
+      .join("");
   }
 
   _performEncode(letter, index) {
@@ -47,10 +48,8 @@ module.exports = class Cipher {
   }
 
   _wrapCharCodeBackAround(code) {
-    if (this._codeComesBeforeAlphabet(code))
-      code += this.LENGTH_OF_ALPHABET;
-    if (this._codeComesAfterAlphabet(code))
-      code -= this.LENGTH_OF_ALPHABET;
+    if (this._codeComesBeforeAlphabet(code)) code += this.LENGTH_OF_ALPHABET;
+    if (this._codeComesAfterAlphabet(code)) code -= this.LENGTH_OF_ALPHABET;
     return code;
   }
 
@@ -61,4 +60,4 @@ module.exports = class Cipher {
   _codeComesAfterAlphabet(code) {
     return code > this.CHAR_CODE_Z;
   }
-}
+};

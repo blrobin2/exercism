@@ -1,6 +1,6 @@
-var TwoFer = function () {};
+var TwoFer = function() {};
 
-TwoFer.prototype.twoFer = function (who = 'you') {
+TwoFer.prototype.twoFer = function(who = "you") {
   // your code goes here
   // You will have to use the parameter who
   // in some way. In this example, it is just
