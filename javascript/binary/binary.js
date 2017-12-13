@@ -5,7 +5,6 @@ module.exports = class Binary {
     } else {
       this.binary = [...binary];
     }
-    this.BASE_2 = 2;
   }
 
   toDecimal() {
@@ -18,12 +17,13 @@ module.exports = class Binary {
     );
   }
 
-  _powerOfTwoConversion(number, positionFromEnd) {
-    return parseInt(number) * Math.pow(this.BASE_2, positionFromEnd);
-  }
-
   _isOnlyOnesAndZeros(string) {
     return string.match(/^[0-1]*$/g);
+  }
+
+  _powerOfTwoConversion(number, positionFromEnd) {
+    // same as number * Math.pow(2, positionFromEnd)
+    return number << positionFromEnd;
   }
 
   _getPositionFromEnd(index) {
