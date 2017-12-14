@@ -5,8 +5,8 @@ module.exports = class Cipher {
     }
     this.key = key;
     this.LENGTH_OF_ALPHABET = 26;
-    this.CHAR_CODE_A = "a".charCodeAt(0);
-    this.CHAR_CODE_Z = "z".charCodeAt(0);
+    this.CHAR_CODE_A = "a".charCodeAt();
+    this.CHAR_CODE_Z = "z".charCodeAt();
     this.map = this._createMapFromKey();
   }
 
@@ -19,7 +19,7 @@ module.exports = class Cipher {
   }
 
   _mapLetterToAlphabetIndex(letter) {
-    return letter.charCodeAt(0) - this.CHAR_CODE_A;
+    return letter.charCodeAt() - this.CHAR_CODE_A;
   }
 
   encode(string) {
@@ -40,11 +40,11 @@ module.exports = class Cipher {
   }
 
   _performEncode(letter, index) {
-    return letter.charCodeAt(0) + this.map[index % this.key.length];
+    return letter.charCodeAt() + this.map[index % this.key.length];
   }
 
   _performDecode(letter, index) {
-    return letter.charCodeAt(0) - this.map[index % this.key.length];
+    return letter.charCodeAt() - this.map[index % this.key.length];
   }
 
   _wrapCharCodeBackAround(code) {
