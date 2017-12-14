@@ -4,7 +4,8 @@ const operations = {
   plus: (sum, number) => sum + number,
   minus: (difference, number) => difference - number,
   multiplied: (product, number) => product * number,
-  divided: (quotient, number) => quotient / number
+  divided: (quotient, number) => quotient / number,
+  raised: Math.pow
 };
 
 function getNumbersFromWordQuestion(question) {

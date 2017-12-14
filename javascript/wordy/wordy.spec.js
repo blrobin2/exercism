@@ -85,4 +85,11 @@ describe('Word Problem', function () {
 
     expect(problem.answer.bind(problem)).toThrow(new ArgumentError());
   });
+
+  it('handles exponentials', function () {
+    const question = "What is 2 raised to the 5th power?";
+    const problem = new WordProblem(question);
+
+    expect(problem.answer()).toEqual(32);
+  });
 });
