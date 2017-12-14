@@ -51,7 +51,8 @@ module.exports = class SecretHandshake {
   }
 
   _getPosition(currentIndex) {
-    return "1" + this._getZeroes(currentIndex);
+    const amountToPad = this._binaryNumber.length - currentIndex;
+    return "1".padEnd(amountToPad, "0");
   }
 
   get _shouldReverse() {
@@ -66,11 +67,5 @@ module.exports = class SecretHandshake {
 
   _addToStartOfCollection(element, array) {
     return [element, ...array];
-  }
-
-  _getZeroes(currentIndex) {
-    return this._binaryNumber.length === 1
-      ? ""
-      : "0".repeat(this._binaryNumber.length - currentIndex - 1);
   }
 };
