@@ -10,7 +10,7 @@ module.exports = class School {
   }
 
   add(name, grade) {
-    const roster = this._getRosterForGrade(grade).slice();
+    const roster = this._getRosterForGrade(grade);
     roster.push(name);
     this._setRosterForGrade(roster.sort(), grade);
   }
