@@ -1,40 +1,32 @@
 module.exports = class Triagle {
   constructor(numRows) {
+    this._firstRow = [1];
     this.rows = this._calculateRows(numRows);
-    this.lastRow = this.rows[this.rows.length - 1];
   }
 
   _calculateRows(numRows) {
-    const rows = [];
+    const rows = [this._firstRow];
     toNextRow: for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-      if (this._isFirstRow(rowIndex)) {
-        rows.push([1]);
-        continue toNextRow;
-      }
-      const row = this._calculateRow(rowIndex, rows);
-      rows.push(row);
+      if (this._isFirst(rowIndex)) continue toNextRow;
+      rows.push(this._calculateRow(rows[rowIndex - 1]));
     }
     return rows;
   }
 
-  _isFirstRow(index) {
+  get lastRow() {
+    return this.rows[this.rows.length - 1];
+  }
+
+  _isFirst(index) {
     return index === 0;
   }
 
-  _calculateRow(rowIndex, rows) {
-    const row = [];
-    toNextNumber: for (let numIndex = 0; numIndex <= rowIndex; numIndex++) {
-      if (this._isFirstOrLastNumber(numIndex, rowIndex)) {
-        row.push(1);
-        continue toNextNumber;
-      }
-      const previousRow = rows[rowIndex - 1];
-      row.push(previousRow[numIndex] + previousRow[numIndex - 1]);
-    }
+  _calculateRow(previousRow) {
+    const row = previousRow.map(
+      (number, index) =>
+        this._isFirst(index) ? number : number + previousRow[index - 1]
+    );
+    row.push(1);
     return row;
-  }
-
-  _isFirstOrLastNumber(numIndex, rowIndex) {
-    return numIndex === 0 || numIndex === rowIndex;
   }
 };
