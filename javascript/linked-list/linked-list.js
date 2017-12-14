@@ -10,7 +10,7 @@ module.exports = class Node {
     while (last.next) {
       last = last.next;
     }
-    last.next = new Node(last, value, null);
+    last.next = new Node(last, value);
   }
 
   pop() {
@@ -35,7 +35,7 @@ module.exports = class Node {
   }
 
   unshift(value) {
-    let currentFirst = null;
+    let currentFirst;
     if (this.next) {
       currentFirst = this.next;
     }
