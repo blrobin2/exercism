@@ -1,4 +1,4 @@
-const usedNames = {};
+const usedNames = new Set;
 
 module.exports = class Robot {
   constructor() {
@@ -13,8 +13,8 @@ module.exports = class Robot {
 
   _constructName() {
     let name;
-    while (usedNames[(name = this._generateString())]);
-    usedNames[name] = true;
+    while (usedNames.has((name = this._generateString())));
+    usedNames.add(name);
     return name;
   }
 
