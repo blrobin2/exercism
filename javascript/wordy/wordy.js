@@ -3,7 +3,7 @@ const ArgumentError = Error;
 const operations = {
   plus: (sum, number) => sum + number,
   minus: (difference, number) => difference - number,
-  multiplied: (product, number) => product * number,
+  multiplied: Math.imul,
   divided: (quotient, number) => quotient / number,
   raised: Math.pow
 };
