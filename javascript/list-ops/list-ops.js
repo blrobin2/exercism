@@ -15,13 +15,11 @@ module.exports = class List {
   }
 
   filter(func) {
-    let list = this.values;
-    for (let i = 0; i < list.length; i++) {
-      if (!func(list[i])) {
-        list.splice(i, 1);
+    for (let i = 0; i < this.values.length; i++) {
+      if (!func(this.values[i])) {
+        this.values.splice(i, 1);
       }
     }
-    this.values = list;
     return this;
   }
 
@@ -34,11 +32,9 @@ module.exports = class List {
   }
 
   map(func) {
-    let mappedValues = [];
     for (let i = 0; i < this.values.length; i++) {
-      mappedValues[i] = func(this.values[i]);
+      this.values[i] = func(this.values[i]);
     }
-    this.values = mappedValues;
     return this;
   }
 
@@ -59,11 +55,14 @@ module.exports = class List {
   }
 
   reverse() {
-    let newList = [];
-    for (let i = 0; i < this.values.length; i++) {
-      newList[this.values.length - i - 1] = this.values[i];
+    const existingValues = this.values.slice();
+    for (
+      let i = 0, n = existingValues.length - 1;
+      i < this.values.length;
+      i++, n--
+    ) {
+      this.values[i] = existingValues[n];
     }
-    this.values = newList;
     return this;
   }
 };

@@ -128,20 +128,13 @@ describe('List', function () {
     var list = new List([1, 2, 3, 4]);
     var list2 = new List([5, 1]);
 
-    let map;
-    let filter;
-    let reduce;
-    let reduceRight;
-    let reverse;
-    let concat;
-
     beforeAll(function () {
-      map = spyOn(list.values, 'map').and.callThrough();
-      filter = spyOn(list.values, 'filter').and.callThrough();
-      reduce = spyOn(list.values, 'reduce').and.callThrough();
-      reduceRight = spyOn(list.values, 'reduceRight').and.callThrough();
-      reverse = spyOn(list.values, 'reverse').and.callThrough();
-      concat = spyOn(list.values, 'concat').and.callThrough();
+      spyOn(list.values, 'map').and.callThrough();
+      spyOn(list.values, 'filter').and.callThrough();
+      spyOn(list.values, 'reduce').and.callThrough();
+      spyOn(list.values, 'reduceRight').and.callThrough();
+      spyOn(list.values, 'reverse').and.callThrough();
+      spyOn(list.values, 'concat').and.callThrough();
 
       list.length();
       list.append(list2);
@@ -154,22 +147,22 @@ describe('List', function () {
     });
 
     it('Array.prototype.map()', function () {
-      expect(map).not.toHaveBeenCalled();
+      expect(list.values.map).not.toHaveBeenCalled();
     });
     it('Array.prototype.filter()', function () {
-      expect(filter).not.toHaveBeenCalled();
+      expect(list.values.filter).not.toHaveBeenCalled();
     });
     it('Array.prototype.reduce()', function () {
-      expect(reduce).not.toHaveBeenCalled();
+      expect(list.values.reduce).not.toHaveBeenCalled();
     });
     it('Array.prototype.reduceRight()', function () {
-      expect(reduceRight).not.toHaveBeenCalled();
+      expect(list.values.reduceRight).not.toHaveBeenCalled();
     });
     it('Array.prototype.concat()', function () {
-      expect(concat).not.toHaveBeenCalled();
+      expect(list.values.concat).not.toHaveBeenCalled();
     });
     it('Array.prototype.reverse()', function () {
-      expect(reverse).not.toHaveBeenCalled();
+      expect(list.values.reverse).not.toHaveBeenCalled();
     });
   });
 });
