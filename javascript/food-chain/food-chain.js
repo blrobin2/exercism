@@ -47,9 +47,8 @@ module.exports = class FoodChain {
 
   verses(startVerse, endVerse) {
     let verses = "";
-    for (this._verse = startVerse; this._verse <= endVerse; this._verse++) {
+    for (this._verse = startVerse; this._verse <= endVerse; this._verse++)
       verses += this.verse() + "\n";
-    }
     return verses;
   }
 
@@ -69,14 +68,6 @@ module.exports = class FoodChain {
 ${this._getPhrase()}`;
   }
 
-  _getFood() {
-    return this._foods[this._verse].food;
-  }
-
-  _getPhrase() {
-    return this._foods[this._verse].phrase;
-  }
-
   _isLastVerse() {
     return this._verse === Object.keys(this._foods).length;
   }
@@ -86,6 +77,14 @@ ${this._getPhrase()}`;
     for (let countdown = this._verse; countdown > 0; countdown--)
       verse += this._getSwallowReason(countdown);
     return verse;
+  }
+
+  _getFood() {
+    return this._foods[this._verse].food;
+  }
+
+  _getPhrase() {
+    return this._foods[this._verse].phrase;
   }
 
   _getSwallowReason(countdown) {
