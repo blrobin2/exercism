@@ -5,11 +5,11 @@ module.exports = class BeerSong {
   }
 
   sing(fromVerse, toVerse = this.LAST_VERSE) {
-    let song = "";
+    let song = [];
     for (let currVerse = fromVerse; currVerse >= toVerse; currVerse--) {
-      song += this._buildVerse(currVerse, toVerse);
+      song.push(this.verse(currVerse));
     }
-    return song;
+    return song.join("\n");
   }
 
   verse(num) {
@@ -18,13 +18,6 @@ module.exports = class BeerSong {
       `${this._secondaryLine(num)}, ` +
       `${this._primaryLine(this._getNextNumber(num))} on the wall.\n`
     );
-  }
-
-  _buildVerse(number, lastVerseNumber) {
-    const verse = this.verse(number);
-    return (number !== lastVerseNumber)
-      ? verse + "\n"
-      : verse;
   }
 
   _firstLine(num) {
