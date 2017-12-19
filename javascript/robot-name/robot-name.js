@@ -29,7 +29,7 @@ module.exports = class Robot {
   }
 
   _randomNumber() {
-    return this._random(111, 999).toString();
+    return this._random(100, 999).toString();
   }
 
   _random(min, max) {
