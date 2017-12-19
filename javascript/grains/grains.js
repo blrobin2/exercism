@@ -5,23 +5,15 @@ module.exports = class Grains {
     this._NUMBER_OF_SQUARES_ON_CHESSBOARD = 64;
   }
   square(squareNumber) {
-    return this._getSquare(squareNumber).toString();
+    return BigInt(2)
+      .pow(squareNumber - 1)
+      .toString();
   }
 
   total() {
-    let total = 0;
-    for (
-      let squareNumber = 1;
-      squareNumber <= this._NUMBER_OF_SQUARES_ON_CHESSBOARD;
-      squareNumber++
-    )
-      total = this._getSquare(squareNumber).plus(total);
-    return total.toString();
-  }
-
-  _getSquare(squareNumber) {
-    return squareNumber === 1
-      ? BigInt(squareNumber)
-      : this._getSquare(squareNumber - 1).multiply(2);
+    return BigInt(2)
+      .pow(this._NUMBER_OF_SQUARES_ON_CHESSBOARD)
+      .subtract(1)
+      .toString();
   }
 };
