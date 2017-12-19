@@ -28,15 +28,7 @@ const pointsPerLetter = {
 };
 
 const getPointsForLetter = letter => pointsPerLetter[letter.toLowerCase()];
-
-const addPointsTogether = (total, points) => total + points;
-
-const score = word =>
-  !word
-    ? 0
-    : word
-        .split("")
-        .map(getPointsForLetter)
-        .reduce(addPointsTogether, 0);
+const addPointsTogether = (total, letter) => total + getPointsForLetter(letter);
+const score = word => (!word ? 0 : word.split("").reduce(addPointsTogether, 0));
 
 module.exports = score;
