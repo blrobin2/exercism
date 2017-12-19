@@ -17,11 +17,11 @@ describe('Acronyms are produced from', function () {
     expect(Acronyms.parse('First In, First Out')).toEqual('FIFO');
   });
 
-  xit('other phrases with punctuation', function () {
+  it('other phrases with punctuation', function () {
     expect(Acronyms.parse('PHP: Hypertext Preprocessor')).toEqual('PHP');
   });
 
-  xit('phrases with punctuation and sentence casing', function () {
+  it('phrases with punctuation and sentence casing', function () {
     expect(Acronyms.parse('Complementary metal-oxide semiconductor')).toEqual('CMOS');
   });
 });

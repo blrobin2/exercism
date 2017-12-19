@@ -20,10 +20,15 @@ module.exports = class Acronyms {
   }
 
   static _uppercaseWord(word) {
+    if (this._isRecursiveBackronym(word)) return word[0];
     return word[0].toUpperCase() + word.substring(1);
   }
 
   static _getUpperCaseLetters(word) {
     return word.match(/[A-Z]/g);
+  }
+
+  static _isRecursiveBackronym(word) {
+    return word[0].match(/[A-Z]/) && word[1].match(/[A-Z]/);
   }
 };
