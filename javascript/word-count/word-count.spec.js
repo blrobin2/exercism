@@ -43,12 +43,12 @@ describe('count()', function () {
     expect(words.count('First: don\'t laugh. Then: don\'t cry.')).toEqual(expectedCounts);
   });
 
-  xit('counts words with quotations', function () {
+  it('counts words with quotations', function () {
     var expectedCounts = { 'joe': 1, 'can\'t': 1, 'tell': 1, 'between': 1, 'large': 2, 'and': 1 };
     expect(words.count('Joe can\'t tell between \'large\' and large.')).toEqual(expectedCounts);
   });
 
-  xit('counts properly international characters', function () {
+  it('counts properly international characters', function () {
     var expectedCounts = { 'hola': 1, 'qué': 1, 'tal': 1, 'привет': 1 };
     expect(words.count('¡Hola! ¿Qué tal? Привет!')).toEqual(expectedCounts);
   });
@@ -73,7 +73,7 @@ describe('count()', function () {
     expect(words.count('\t\tIntroductory Course      ')).toEqual(expectedCounts);
   });
 
-  xit('handles properties that exist on Object’s prototype', function () {
+  it('handles properties that exist on Object’s prototype', function () {
     var expectedCounts = { reserved: 1, words: 1, like: 1, constructor: 1, and: 1, tostring: 1, ok: 1 };
     expect(words.count('reserved words like constructor and toString ok?')).toEqual(expectedCounts);
   });
