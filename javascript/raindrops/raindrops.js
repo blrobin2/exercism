@@ -6,6 +6,7 @@ module.exports = class Raindrops {
       7: "Plong"
     };
   }
+
   convert(number) {
     return this._checkFactors(number) || number.toString();
   }
