@@ -1,25 +1,23 @@
 module.exports = class Raindrops {
+  constructor() {
+    this._factors = {
+      3: "Pling",
+      5: "Plang",
+      7: "Plong"
+    };
+  }
   convert(number) {
     return this._checkFactors(number) || number.toString();
   }
 
   _checkFactors(number) {
-    let conversion = "";
-    if (this._factorOf3(number)) conversion += "Pling";
-    if (this._factorOf5(number)) conversion += "Plang";
-    if (this._factorOf7(number)) conversion += "Plong";
-    return conversion;
+    return Object.keys(this._factors)
+      .filter(factor => this._isFactor(factor, number))
+      .map(factor => this._factors[factor])
+      .join("");
   }
 
-  _factorOf3(number) {
-    return number % 3 === 0;
-  }
-
-  _factorOf5(number) {
-    return number % 5 === 0;
-  }
-
-  _factorOf7(number) {
-    return number % 7 === 0; 
+  _isFactor(factor, number) {
+    return number % factor === 0;
   }
 };
