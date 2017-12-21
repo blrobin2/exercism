@@ -14,7 +14,7 @@ function convertLetter(character) {
 }
 
 function removeSpecialCharacters(character) {
-  return /[^\s\,\.]/.test(character);
+  return /[\w]/.test(character);
 }
 
 function addSpacing(output, character, index) {
