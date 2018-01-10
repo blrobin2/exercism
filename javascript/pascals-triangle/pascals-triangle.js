@@ -6,8 +6,7 @@ module.exports = class Triagle {
 
   _calculateRows(numRows) {
     const rows = [this._firstRow];
-    toNextRow: for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-      if (this._isFirst(rowIndex)) continue toNextRow;
+    toNextRow: for (let rowIndex = 1; rowIndex < numRows; rowIndex++) {
       rows.push(this._calculateRow(rows[rowIndex - 1]));
     }
     return rows;
@@ -17,10 +16,6 @@ module.exports = class Triagle {
     return this.rows[this.rows.length - 1];
   }
 
-  _isFirst(index) {
-    return index === 0;
-  }
-
   _calculateRow(previousRow) {
     const row = previousRow.map(
       (number, index) =>
@@ -28,5 +23,9 @@ module.exports = class Triagle {
     );
     row.push(1);
     return row;
+  }
+
+  _isFirst(index) {
+    return index === 0;
   }
 };
