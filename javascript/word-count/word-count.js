@@ -27,11 +27,11 @@ module.exports = class Words {
   }
 
   _removeSpecialCharacters(word) {
-    return word.replace(/[\!\&\@\$\%\^\&\.\:\¡\¿\?]/g, "");
+    return word.replace(/[!&@$%^&.:¡¿?]/g, "");
   }
 
   _removeQuotationMarks(word) {
-    return word.replace(/\'(.*)\'/, (_, word) => word);
+    return word.replace(/\'(.*)\'/, "$1");
   }
 
   _isNotCountedYet(word, object) {
@@ -46,6 +46,6 @@ module.exports = class Words {
   }
 
   _isReservedWordOnPrototype(word, object) {
-    return object[word] && isNaN(object[word]);
+    return isNaN(object[word]);
   }
 };
