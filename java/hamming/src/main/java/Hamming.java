@@ -9,13 +9,21 @@ class Hamming {
 
         this.leftStrand = leftStrand;
         this.rightStrand = rightStrand;
-        this.distance = 0;
+        this.distance = calculateHammingDistance();
     }
 
     int getHammingDistance() {
-        for (int i = 0; i < leftStrand.length(); i++)
-            if (leftStrand.charAt(i) != rightStrand.charAt(i))
+        return distance;
+    }
+
+    private int calculateHammingDistance() {
+        for (int i = 0, length = leftStrand.length(); i < length; i++)
+            if (isNotSameCharacter(i))
                 distance++;
         return distance;
+    }
+
+    private boolean isNotSameCharacter(int index) {
+        return leftStrand.charAt(index) != rightStrand.charAt(index);
     }
 }
