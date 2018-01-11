@@ -1,4 +1,6 @@
+.vscode
 .gradle
+*/.vscode
 */.gradle
 */build
 */.classpath
